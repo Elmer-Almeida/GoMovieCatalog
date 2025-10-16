@@ -62,7 +62,7 @@ func PrintNumberOfMovies(numMovies int) {
 func ShowRatingStars(rating int) string {
 	var stars string
 	for range rating {
-		stars += " "
+		stars += ""
 	}
 	return stars
 }
@@ -74,4 +74,32 @@ func FilterRatings(movies map[string]utils.MovieItem, rating int) (moviesBasedOn
 		}
 	}
 	return
+}
+
+func ShowFilteredRatings(maxRating int, movies map[string]utils.MovieItem) {
+	ratingFilter := maxRating
+
+	for ratingFilter >= 1 {
+		filteredMovies := FilterRatings(movies, ratingFilter)
+
+		fmt.Printf("Showing all %s star movies: \n", ShowRatingStars(ratingFilter))
+		for index, movie := range filteredMovies {
+			fmt.Printf("%2d) %s (%s) - %s (%d)\n",
+				index+1,
+				movie.Title,
+				movie.Year,
+				ShowRatingStars(movie.Rating),
+				movie.Rating,
+			)
+		}
+		fmt.Printf("\nThere are %d number of %d star movies.\n",
+			len(filteredMovies),
+			ratingFilter,
+		)
+
+		Divider()
+		SingleSeparator()
+		Divider()
+		ratingFilter--
+	}
 }

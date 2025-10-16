@@ -3,7 +3,6 @@ package main
 import (
 	"elmer-almeida/GoMovieCatalog/helpers"
 	"elmer-almeida/GoMovieCatalog/utils"
-	"fmt"
 	"log"
 	"os"
 )
@@ -56,21 +55,5 @@ func main() {
 	helpers.Divider()
 
 	// Get all movies that are 5 stars
-	ratingFilter := MAX_RATING
-
-	for ratingFilter >= 1 {
-		filteredMovies := helpers.FilterRatings(movies, ratingFilter)
-
-		fmt.Printf("Showing all %d star movies: \n", ratingFilter)
-		for index, movie := range filteredMovies {
-			fmt.Printf("%2d) %s (%s) - %s (%d)\n", index+1, movie.Title, movie.Year, helpers.ShowRatingStars(movie.Rating), movie.Rating)
-		}
-		fmt.Printf("\nThere are %d number of %d star movies.\n", len(filteredMovies), ratingFilter)
-
-		helpers.Divider()
-		helpers.SingleSeparator()
-		helpers.Divider()
-		ratingFilter--
-	}
-
+	helpers.ShowFilteredRatings(MAX_RATING, movies)
 }
