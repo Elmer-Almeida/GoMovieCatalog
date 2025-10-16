@@ -9,11 +9,13 @@ import (
 
 var MAX_RATING int = 5
 
+var movies map[string]utils.MovieItem
+
 func main() {
 
 	helpers.ShowIntro()
 
-	var movies map[string]utils.MovieItem = make(map[string]utils.MovieItem)
+	movies = make(map[string]utils.MovieItem)
 
 	dirPath := "/Volumes/T7 SSD - Data/Media/Movies"
 
