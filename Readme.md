@@ -9,7 +9,7 @@ go build
 ``
 
 ``
-./MovieCatalog
+./GoMovieCatalog
 ``
 
 OR 
